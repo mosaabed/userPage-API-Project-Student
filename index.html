@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 
@@ -25,10 +26,41 @@
             </div>	
         </div>	
         <div class="buttons">	
-            <button>Load User Data</button>	
-            <button>Display User</button>	
+            <button id="loadButton">Load User Data</button>	
+            <button id="desplayButton" >Display User</button>	
         </div>	
     </div>
+
+    <script id="pokemon-template" type="text/x-handlebars-template">
+        <div><img src={{url}} >Favorite Pokemon: {{name}}</div>
+    </script>
+
+    <script id="favquote-template" type="text/x-handlebars-template">
+        <ul>
+              <li>Favorite quote:</li>
+              <li> "{{quote}}"</li>
+        </ul>
+    </script>
+
+    <script id="user-template" type="text/x-handlebars-template">
+        <img src={{picture.medium}} >
+        <ul>
+              <li>{{name.first}} {{name.last}} </li>
+              <li>{{location.city}} {{location.state}} </li>
+        </ul>
+    </script>
+
+    <script id="friends-template" type="text/x-handlebars-template">
+        <ul>
+            {{#each this}}
+              <li>{{name.first}} {{name.last}} </li>
+            {{/each}}
+          </ul>
+    </script>
+    <script src="APIManager.js"></script> 
+    <script src="Renderer.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
+    <script src="main.js"></script> 
 </body>
 
 </html>
